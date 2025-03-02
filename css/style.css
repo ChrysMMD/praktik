@@ -1,0 +1,497 @@
+/* --- IMPORT FONTE --- */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap");
+
+/* --- FARVER --- */
+:root {
+  --dark-blue: #152e37;
+  --orange: #eb652c;
+  --light-grey: #d7d7d7;
+  --off-white: #f6f6f6;
+  --dark-grey: #555555;
+  --off-black: #313131;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  font-size: clamp(12px, 1vw, 18px);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.left img {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-left img {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.3rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--light-grey);
+  padding: 1rem;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* --- TYPOGRAFI --- */
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3rem, 18vw, 10rem);
+  line-height: 0.8;
+  color: var(--dark-blue);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  color: var(--orange);
+}
+
+h2:not(:first-child) {
+  margin-top: 1.3rem;
+}
+
+h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(1rem, 8vw, 2.5rem);
+  color: var(--dark-grey);
+}
+
+h4 {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+h4:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.tekst-indhold h4:first-of-type {
+  margin-top: 0;
+}
+
+h5 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.3rem;
+  color: var(--off-white);
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+p {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  color: var(--off-black);
+}
+
+a {
+  text-decoration: none;
+}
+
+.about-right a {
+  height: 300px;
+  width: 150px;
+}
+
+/* --- NAV --- */
+
+header {
+  width: 100%;
+  height: 5rem;
+}
+
+.fixed-menu {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 2px solid var(--dark-grey);
+}
+
+.fixed-menu a {
+  text-decoration: none;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3rem;
+  color: var(--dark-grey);
+  transition: all 0.3s ease;
+}
+
+.fixed-menu a:hover {
+  color: var(--off-white);
+  text-decoration: line-through;
+  font-size: 3.2rem;
+}
+
+.fixed-menu a:active {
+  color: var(--off-white);
+  text-decoration: line-through;
+}
+
+/* --- POPUP REF --- */
+.popup-ref {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3); /* Mørkt overlay */
+  backdrop-filter: blur(8px); /* Slør alt bagved */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup-ref.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup-content {
+  position: relative;
+  background: var(--off-white);
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 10;
+}
+
+.popup-content p {
+  column-count: 2;
+  column-gap: 30px;
+  text-align: start;
+  color: var(--dark-blue);
+}
+
+.popup-content h4 {
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+}
+
+.popup-content .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.ref-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.ref-content img {
+  cursor: pointer;
+}
+
+/* --- KNAPPER EVNER ---*/
+.openPopup {
+  background-color: transparent;
+  color: var(--light-grey);
+  border: 1px solid var(--dark-grey);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.openPopup:hover {
+  background-color: var(--off-white);
+  border: var(--off-white);
+  text-decoration: line-through;
+}
+
+/* --- TOGGLE PIL --- */
+.arrow-icon {
+  display: none;
+  width: 20px;
+  transition: transform 0.3s ease;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+main h1 {
+  font-size: clamp(3rem, 15vw, 14rem);
+}
+
+main h3 {
+  font-size: clamp(1rem, 5vw, 4rem);
+  margin-top: -0.8em;
+  margin-left: 0.1em;
+}
+
+/* --- LAYOUT --- */
+.right {
+  flex-grow: 1;
+}
+
+.ref-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  padding-right: 25vw;
+}
+
+.tekst-info p {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.tekst-info a {
+  text-decoration: none;
+  color: var(--off-black);
+  transition: color 0.3s ease, font-size 0.3s ease, text-decoration 0.3s ease;
+}
+
+.tekst-info a:hover {
+  text-decoration: line-through;
+  color: var(--off-white);
+  font-size: 1.3rem;
+}
+
+/* --- IKONER --- */
+
+.tekst-info img {
+  max-width: 2rem;
+  border-radius: 0px;
+  box-shadow: none;
+  margin: 0;
+  margin-right: 0.3rem;
+  padding: 0;
+}
+
+/* --- CARDS --- */
+.about-right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 150px;
+  height: 300px;
+  background: var(--dark-blue);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  height: 75%;
+  width: auto;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* --- POPUP --- */
+.popup {
+  position: absolute;
+  background: var(--off-white);
+  border-radius: 20px;
+  padding: 15px;
+  max-width: 20rem;
+  height: auto;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+  z-index: 99;
+}
+
+.popup p {
+  color: var(--dark-blue);
+}
+
+.hidden {
+  display: none;
+}
+
+.popup p {
+  font-size: 0.8rem;
+}
+
+.ref {
+  display: flex;
+  flex-direction: column;
+}
+
+.ref-content img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* --- STYLING --- */
+ul {
+  list-style-type: disc; /* Viser prikker */
+  padding-left: 20px; /* Sørger for, at prikker ikke bliver skåret af */
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 1rem; /* 16px*/
+  color: var(--light-grey);
+}
+
+.left {
+  padding: 1rem;
+  background-color: var(--dark-blue);
+  border-radius: 20px;
+}
+
+.about-left {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--dark-blue);
+  padding: 1rem;
+  border-radius: 20px;
+}
+
+.about-left p {
+  color: var(--light-grey);
+}
+
+.about-left a {
+  color: var(--light-grey);
+}
+
+.about-left h4 {
+  color: var(--light-grey);
+}
+
+/* --- MEDIAQUERY --- */
+@media (max-width: 650px) {
+  .content {
+    flex-direction: column;
+    margin-right: 120px;
+    background-color: var(--dark-blue);
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .popup-content p {
+    column-count: 1; /* Skift til 1 kolonne */
+  }
+
+  .toggle-content {
+    display: none;
+  }
+
+  li :first-child {
+    margin-top: 0.3rem;
+  }
+
+  .toggle-h2 {
+    cursor: pointer;
+    border-bottom: 2px solid var(--orange);
+    padding-bottom: 5px;
+  }
+
+  .toggle-h2:hover {
+    color: var(--off-white);
+    text-decoration: line-through;
+  }
+
+  .arrow-icon {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+  }
+
+  .toggle-h2.active .arrow-icon {
+    transform: rotate(180deg);
+  }
+
+  .popup {
+    display: hidden;
+  }
+
+  .left {
+    border-right: none;
+  }
+
+  .about-left {
+    width: 100%;
+    display: flex;
+  }
+
+  h4 {
+    color: var(--light-grey);
+  }
+
+  p {
+    color: var(--light-grey);
+  }
+
+  .right {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .about-left {
+    flex-direction: column;
+  }
+}
