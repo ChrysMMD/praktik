@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectsCards = {
     projekt1: {
       title: "UX/UI Projekt",
-      img: "/img/ux.webp",
+      img: "img/ux.webp",
       description: "Her har vi et projekt!"
     },
     projekt2: {
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const projects = {
       projekt1: {
         title: "UX/UI Projekt",
-        images: ["/img/ux.webp", "/img/moodboard.webp", "/img/styletile.png"],
+        images: ["img/ux.webp", "img/moodboard.webp", "img/styletile.png"],
         description: `
         <div class="description-item"><h2>Opgaven:</h2>
 <p>Som studiegruppe skulle vi lave en webside til UX/UI Copenhagen Conference. Der skulle selvfølgelig lægges vægt på ux/ui men også bæredygtighed indenfor branchen, fordi det var hvad årets konference havde som tema. Et andet krav var også, at der skulle være et program for de forskellige speakers til konferencen samt et onlinesalg af billetter.</p>
@@ -177,7 +177,7 @@ Vi formåede ikke at blive helt færdig med vores side, men vi opfyldte de form�
       },
       projekt2: {
         title: "Brand Strategy Projekt",
-        images: ["/img/ca.png", "/img/ca_grafik.png", "/img/ca_styleboard.png", "/img/cadokument.png"],
+        images: ["img/ca.png", "/img/ca_grafik.png", "img/ca_styleboard.png", "img/cadokument.png"],
         description: `<div class="description-item">
 <h2>Opgaven:</h2>
 <p>I studiegruppen skulle vi lave et stort projekt for CA-akasse, som ønskede at vi lavede en kampagne for dem med en ung målgruppe af studerende. Vi skulle ind over SoMe, branding, kampagneplanlægning og hjemmeside. </p></div>
@@ -201,7 +201,7 @@ Til sidst kodede vi hjemmesiden sammen, lavede SEO og testede det hele af med en
 
       projekt3: {
         title: "Semesterprojekt",
-        images: ["/img/figma.png", "/img/semester_styletile.png", "/img/semester_singleview.png", "/img/semester_header.png"],
+        images: ["img/figma.png", "img/semester_styletile.png", "img/semester_singleview.png", "img/semester_header.png"],
         description: `<div class="description-item">
 <h2>Opgaven:</h2>
 <p>I studiegruppen skulle vi som semesterafslutning finde en virksomhed, der ønskede en ny hjemmeside, SoMe Managing og en ny Brand Strategi. </p>
@@ -224,7 +224,7 @@ Vi nåede at blive færdig mere eller mindre tilfredse, da det havde været svæ
       },
       projekt4: {
         title: "Logo Projekt",
-        images: ["/img/logo.webp"],
+        images: ["img/logo.webp"],
         description: `<div class="description-item">
 <h2>Opgaven:</h2>
 <p>Der skulle laves et moderne logo til en rollespilforening, som var let genkendeligt og kunne bruges til merchandise.</p>
