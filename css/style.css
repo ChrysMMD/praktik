@@ -385,6 +385,11 @@ main h3 {
   object-fit: cover;
 }
 
+.ref-content:hover {
+  transition: all 0.3s ease;
+  transform: scale(1.1);
+}
+
 /* --- STYLING --- */
 ul {
   list-style-type: disc; /* Viser prikker */
