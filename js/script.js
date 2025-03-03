@@ -177,7 +177,7 @@ Vi formåede ikke at blive helt færdig med vores side, men vi opfyldte de form�
       },
       projekt2: {
         title: "Brand Strategy Projekt",
-        images: ["img/ca.png", "/img/ca_grafik.png", "img/ca_styleboard.png", "img/cadokument.png"],
+        images: ["img/ca.png", "img/ca_grafik.png", "img/ca_styleboard.png", "img/cadokument.png"],
         description: `<div class="description-item">
 <h2>Opgaven:</h2>
 <p>I studiegruppen skulle vi lave et stort projekt for CA-akasse, som ønskede at vi lavede en kampagne for dem med en ung målgruppe af studerende. Vi skulle ind over SoMe, branding, kampagneplanlægning og hjemmeside. </p></div>
