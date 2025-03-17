@@ -39,7 +39,6 @@ ol {
 .left img {
   width: 100%;
   max-width: 200px;
-  aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 20px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
@@ -48,7 +47,6 @@ ol {
 .about-left img {
   width: 100%;
   max-width: 220px;
-  aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 20px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
@@ -76,7 +74,7 @@ h1 {
 
 h2 {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 3rem);
   color: var(--orange);
 }
 
@@ -92,7 +90,7 @@ h3 {
 
 h4 {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: bold;
 }
 
@@ -106,7 +104,7 @@ h4:not(:first-child) {
 
 h5 {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   color: var(--off-white);
   margin-top: 0.5rem;
   margin-left: 0.5rem;
@@ -122,13 +120,12 @@ a {
   text-decoration: none;
 }
 
-.about-right a {
+.projekter a {
   height: 300px;
   width: 150px;
 }
 
 /* --- NAV --- */
-
 header {
   width: 100%;
   height: 5rem;
@@ -218,7 +215,6 @@ header {
 
 .ref-container {
   display: flex;
-  justify-content: space-around;
 }
 
 .ref-content img {
@@ -243,13 +239,6 @@ header {
   text-decoration: line-through;
 }
 
-/* --- TOGGLE PIL --- */
-.arrow-icon {
-  display: none;
-  width: 20px;
-  transition: transform 0.3s ease;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -270,7 +259,7 @@ main h3 {
 
 /* --- LAYOUT --- */
 .right {
-  flex-grow: 1;
+  grid-area: right;
 }
 
 .ref-container {
@@ -279,10 +268,17 @@ main h3 {
 }
 
 .content {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   gap: 1.5rem;
-  padding-right: 25vw;
+  padding-right: 25vw; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "left right right"
+    "projekter projekter projekter";
+  gap: 20px;
 }
 
 .tekst-info p {
@@ -317,10 +313,13 @@ main h3 {
 }
 
 /* --- CARDS --- */
-.about-right {
+.projekt-container {
+  grid-area: projekter;
+}
+
+.projekter {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
 }
 
@@ -399,19 +398,93 @@ ul {
   color: var(--light-grey);
 }
 
+.list-header {
+  font-weight: bold;
+  list-style: none;
+}
+
 .left {
+  height: auto;
   padding: 1rem;
+  padding-bottom: 3rem;
   background-color: var(--dark-blue);
   border-radius: 20px;
+  grid-area: left;
+  display: flex;
+  gap: clamp(1rem, 2vw, 24px);
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  align-self: flex-start;
+}
+
+.left > * {
+  flex: 1 1 clamp(200px, 30%, 400px);
+}
+
+.about-right p,
+li {
+  color: var(--dark-blue);
+  margin-bottom: 0.5rem;
+}
+
+.about-right {
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aboutskills {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.aboutskills .skills:nth-of-type(2) {
+  border-left: 1px solid var(--dark-blue);
+  border-right: 1px solid var(--dark-blue);
 }
 
 .about-left {
+  grid-area: left;
+  container-type: inline-size;
   display: flex;
-  align-items: center;
   flex-direction: column;
   background-color: var(--dark-blue);
   padding: 1rem;
   border-radius: 20px;
+}
+
+.wrapper {
+  @container (min-width: 350px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "img info"
+      "img ommig";
+    gap: 1rem;
+  }
+}
+
+.info {
+  grid-area: info;
+}
+
+.portræt {
+  grid-area: img;
+  height: 100%;
+
+  @container (max-width: 350px) {
+    height: auto;
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+}
+
+.ommig {
+  grid-area: ommig;
 }
 
 .about-left p {
@@ -429,44 +502,47 @@ ul {
 /* --- MEDIAQUERY --- */
 @media (max-width: 650px) {
   .content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "left"
+      "right"
+      "projekter";
+  }
+  .content > * {
+    /* Sørg for, at child-elementerne ikke strækker sig for meget */
+    height: auto; /* Lad højden tilpasse sig indholdet */
+    overflow: hidden; /* Skjuler eventuelt ekstra indhold, der går ud over */
+  }
+
+  .aboutskills {
     flex-direction: column;
-    margin-right: 120px;
-    background-color: var(--dark-blue);
-    padding: 1rem;
-    border-radius: 20px;
+  }
+
+  .aboutskills .skills:nth-of-type(2) {
+    border-top: 1px solid var(--dark-blue);
+    border-bottom: 1px solid var(--dark-blue);
+    border-left: none;
+    border-right: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .skills {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    gap: 0.5rem;
   }
 
   .popup-content p {
     column-count: 1; /* Skift til 1 kolonne */
   }
 
-  .toggle-content {
-    display: none;
-  }
-
   li :first-child {
     margin-top: 0.3rem;
-  }
-
-  .toggle-h2 {
-    cursor: pointer;
-    border-bottom: 2px solid var(--orange);
-    padding-bottom: 5px;
-  }
-
-  .toggle-h2:hover {
-    color: var(--off-white);
-    text-decoration: line-through;
-  }
-
-  .arrow-icon {
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-  }
-
-  .toggle-h2.active .arrow-icon {
-    transform: rotate(180deg);
   }
 
   .popup {
@@ -482,21 +558,7 @@ ul {
     display: flex;
   }
 
-  h4 {
-    color: var(--light-grey);
-  }
-
-  p {
-    color: var(--light-grey);
-  }
-
   .right {
     padding: 1rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .about-left {
-    flex-direction: column;
   }
 }

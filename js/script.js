@@ -120,17 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  //Mine toggle-arrows
-  document.querySelectorAll(".toggle-h2").forEach((h2) => {
-    h2.addEventListener("click", () => {
-      h2.classList.toggle("active"); // Tilføjer/fjerner .active for rotation
-
-      let content = h2.nextElementSibling;
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    });
-  });
-
-
   // --- CARDS --- //
   const projectsCards = {
     projekt1: {
