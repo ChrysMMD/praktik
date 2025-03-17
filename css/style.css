@@ -82,6 +82,10 @@ h2:not(:first-child) {
   margin-top: 1.3rem;
 }
 
+.ommig h2 {
+  margin-top: 2rem;
+}
+
 h3 {
   font-family: "Bebas Neue", sans-serif;
   font-size: clamp(1rem, 8vw, 2.5rem);
@@ -94,7 +98,7 @@ h4 {
   font-weight: bold;
 }
 
-h4:not(:first-child) {
+h4:not(:first-of-type) {
   margin-top: 1rem;
 }
 
@@ -398,6 +402,14 @@ ul {
   color: var(--light-grey);
 }
 
+li {
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+}
+
+li:last-child {
+  margin-bottom: 0; /* Fjern margin fra sidste element */
+}
+
 .list-header {
   font-weight: bold;
   list-style: none;
@@ -422,8 +434,7 @@ ul {
   flex: 1 1 clamp(200px, 30%, 400px);
 }
 
-.about-right p,
-li {
+.about-right p li {
   color: var(--dark-blue);
   margin-bottom: 0.5rem;
 }
@@ -480,6 +491,8 @@ li {
     height: auto;
     width: 100%;
     aspect-ratio: 1/1;
+    display: block; /* Gør det muligt at bruge margin-auto */
+    margin: 0 auto; /* Centrerer horisontalt */
   }
 }
 
