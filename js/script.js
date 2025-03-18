@@ -8,7 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   triggers.forEach((trigger, index) => {
     trigger.addEventListener("click", () => {
+      trigger.style.visibility = "hidden"; // Skjul billedet midlertidigt
       popups[index].classList.add("show");
+
+      // Gør billedet synligt igen, når popup'en er fuldt synlig
+      setTimeout(() => {
+        trigger.style.visibility = "visible";
+      }, 300); // Matcher CSS transition (0.3s)
     });
   });
 
@@ -19,13 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   window.addEventListener("click", (e) => {
-    popups.forEach((popup) => {
+    popups.forEach((popup, index) => {
       if (e.target === popup) {
         popup.classList.remove("show");
       }
     });
   });
-
 
 
 

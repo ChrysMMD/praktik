@@ -178,6 +178,7 @@ header {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  z-index: 1000;
 }
 
 .popup-ref.show {
@@ -191,10 +192,17 @@ header {
   padding: 20px;
   width: 80%;
   max-width: 600px;
+  max-height: 80vh;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   z-index: 10;
+  transition: transform 0.3s ease;
+  transform: scale(0.95);
+}
+
+.popup-ref.show .popup-content {
+  transform: scale(1);
 }
 
 .popup-content p {
@@ -202,6 +210,20 @@ header {
   column-gap: 30px;
   text-align: start;
   color: var(--dark-blue);
+}
+
+.ref-content img {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.ref-content img:hover {
+  transform: scale(1.1);
 }
 
 .popup-content h4 {
@@ -219,10 +241,11 @@ header {
 
 .ref-container {
   display: flex;
+  flex-direction: row;
 }
 
-.ref-content img {
-  cursor: pointer;
+.hidden {
+  display: none;
 }
 
 /* --- KNAPPER EVNER ---*/
@@ -264,11 +287,6 @@ main h3 {
 /* --- LAYOUT --- */
 .right {
   grid-area: right;
-}
-
-.ref-container {
-  display: flex;
-  flex-direction: row;
 }
 
 .content {
@@ -351,54 +369,15 @@ main h3 {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* --- POPUP --- */
-.popup {
-  position: absolute;
-  background: var(--off-white);
-  border-radius: 20px;
-  padding: 15px;
-  max-width: 20rem;
-  height: auto;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-
-  z-index: 99;
-}
-
-.popup p {
-  color: var(--dark-blue);
-}
-
-.hidden {
-  display: none;
-}
-
-.popup p {
-  font-size: 0.8rem;
-}
-
-.ref {
-  display: flex;
-  flex-direction: column;
-}
-
-.ref-content img {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
-
-.ref-content:hover {
-  transition: all 0.3s ease;
-  transform: scale(1.1);
-}
-
 /* --- STYLING --- */
 ul {
   list-style-type: disc; /* Viser prikker */
   padding-left: 20px; /* Sørger for, at prikker ikke bliver skåret af */
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 1rem; /* 16px*/
+}
+
+.uddannelse ul {
   color: var(--light-grey);
 }
 
@@ -550,16 +529,16 @@ li:last-child {
     gap: 0.5rem;
   }
 
-  .popup-content p {
-    column-count: 1; /* Skift til 1 kolonne */
+  .skills li {
+    color: var(--dark-blue);
   }
 
   li :first-child {
     margin-top: 0.3rem;
   }
 
-  .popup {
-    display: hidden;
+  .popup-content p {
+    column-count: 1; /* Skift til 1 kolonne */
   }
 
   .left {

@@ -35,7 +35,7 @@ body {
 /* --- TYPOGRAFI --- */
 h1 {
   font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(3rem, 18vw, 10rem);
+  font-size: clamp(3rem, 15vw, 10rem);
   line-height: 0.85;
   color: var(--dark-blue);
   margin-top: 2rem;
@@ -108,8 +108,8 @@ a:hover {
 /* --- NAV --- */
 .fixed-menu {
   position: fixed;
-  bottom: 20px; /* Afstand fra bunden */
-  right: 20px; /* Afstand fra højre */
+  bottom: 20px;
+  right: 20px;
   display: flex;
   flex-direction: column;
   gap: 2px; /* Afstand mellem links */
