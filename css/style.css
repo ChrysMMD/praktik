@@ -44,9 +44,16 @@ ol {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+.wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
 .about-left img {
+  display: flex;
+  align-self: center;
   width: 100%;
-  max-width: 220px;
+  max-height: 30%;
   object-fit: cover;
   border-radius: 20px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
@@ -163,6 +170,28 @@ header {
   text-decoration: line-through;
 }
 
+/* --- FORSIDE ANI --- */
+.line {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUpFade 0.8s ease-out forwards;
+}
+
+.line1 { animation-delay: 0.2s; }
+.line2 { animation-delay: 0.6s; }
+.line3 { animation-delay: 1s; }
+.line4 { animation-delay: 1.4s; }
+
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
 /* --- POPUP REF --- */
 .popup-ref {
   position: fixed;
@@ -257,13 +286,6 @@ header {
   padding: 0.5rem 1rem;
   margin: 0.3rem;
   font-size: 1rem;
-  cursor: pointer;
-}
-
-.openPopup:hover {
-  background-color: var(--off-white);
-  border: var(--off-white);
-  text-decoration: line-through;
 }
 
 main {
@@ -444,39 +466,6 @@ li:last-child {
   background-color: var(--dark-blue);
   padding: 1rem;
   border-radius: 20px;
-}
-
-.wrapper {
-  @container (min-width: 350px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:
-      "img info"
-      "img ommig";
-    gap: 1rem;
-  }
-}
-
-.info {
-  grid-area: info;
-}
-
-.portræt {
-  grid-area: img;
-  height: 100%;
-
-  @container (max-width: 350px) {
-    height: auto;
-    width: 100%;
-    aspect-ratio: 1/1;
-    display: block; /* Gør det muligt at bruge margin-auto */
-    margin: 0 auto; /* Centrerer horisontalt */
-  }
-}
-
-.ommig {
-  grid-area: ommig;
 }
 
 .about-left p {
